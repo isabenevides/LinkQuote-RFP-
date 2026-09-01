@@ -1,5 +1,4 @@
-# LinkQuote-RFP-
-[README.md](https://github.com/user-attachments/files/31708421/README.md)
+[README (1).md](https://github.com/user-attachments/files/31708550/README.1.md)
 # LinkQuote RFP
 
 Sistema web para gestão de RFPs (pedidos de cotação) e cotações de links de internet, desenvolvido como Projeto Integrador em Computação II (PJI240) — UNIVESP.
@@ -29,11 +28,9 @@ Sistema web para gestão de RFPs (pedidos de cotação) e cotações de links de
 
 ## 🛠️ Tecnologias
 
-> Stack a ser confirmada pelo grupo — sugestão inicial abaixo, editem conforme a decisão do time.
-
 - **Frontend:** JavaScript (React ou Vue)
-- **Backend:** Node.js (Express) ou similar
-- **Banco de dados:** relacional (PostgreSQL ou MySQL)
+- **Backend:** Python + Django
+- **Banco de dados:** relacional (PostgreSQL)
 - **API externa:** ViaCEP (consulta de endereço)
 - **Testes:** unitários e de integração
 - **Versionamento:** Git + GitHub, com Pull Requests revisados pelo grupo
@@ -47,10 +44,16 @@ Comparação rápida de opções populares para projetos acadêmicos full-stack 
 
 ```
 linkquote-rfp/
-├── docs/           # Plano de ação, relatórios parcial/final, atas
-├── backend/        # API e regras de negócio
-├── frontend/       # Interface web (painel solicitante e portal provedor)
-├── database/       # Modelagem, scripts e migrações
+├── docs/                   # Plano de ação, relatórios parcial/final, atas
+├── backend/
+│   ├── manage.py
+│   ├── config/             # Settings, urls e wsgi/asgi do projeto Django
+│   ├── rfps/                # App: RFPs, prazos e regras de negócio
+│   ├── propostas/           # App: propostas, ranking e justificativas
+│   ├── provedores/          # App: cadastro e portal do provedor
+│   └── requirements.txt
+├── frontend/               # Interface web (painel solicitante e portal provedor)
+├── database/               # Modelagem e scripts de apoio
 └── README.md
 ```
 
@@ -70,10 +73,21 @@ linkquote-rfp/
 ```bash
 # clonar o repositório
 git clone https://github.com/<seu-usuario>/linkquote-rfp.git
-cd linkquote-rfp
+cd linkquote-rfp/backend
 
-# instruções de instalação do backend/frontend serão adicionadas
-# conforme a stack for definida pelo grupo
+# criar e ativar ambiente virtual
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+# instalar dependências
+pip install -r requirements.txt
+
+# configurar variáveis de ambiente (copiar e preencher)
+cp .env.example .env
+
+# aplicar migrações e subir o servidor
+python manage.py migrate
+python manage.py runserver
 ```
 
 ## 📄 Contexto acadêmico
