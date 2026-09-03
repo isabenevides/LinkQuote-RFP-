@@ -19,6 +19,7 @@ Sistema web para gestão de RFPs (pedidos de cotação) e cotações de links de
 
 ## ✨ Funcionalidades principais
 
+- Um sistema para ajudar uma empresa a escolher qual provedor de internet contratar.
 - Painel do solicitante e portal protegido do provedor
 - Prazo de 3 dias úteis para resposta às cotações, com bloqueio de alterações após o envio
 - Consulta de CEP/endereço (integração ViaCEP) e registro de velocidades de download/upload
